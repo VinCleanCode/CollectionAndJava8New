@@ -1,19 +1,19 @@
 package com.rp.lib.optional;
 
-        import java.util.Optional;
+import java.util.Optional;
+
 public class OptionalExample {
 
-
     public static void main(String[] args) {
-        optionalFilter();
+        String result = optionalFilter(null);
+        System.out.println(result);
     }
 
-    static void optionalFilter(){
-        String value = "";
+    static String optionalFilter(String value){
         String result = Optional.ofNullable(value)
                 .filter(e -> e.equals("18") || e.equals("19"))
                 .map(v -> "Y")
                 .orElse("N");
-        System.out.println("reslut= "+result);
+        return result;
     }
 }
