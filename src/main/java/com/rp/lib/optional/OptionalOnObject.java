@@ -40,5 +40,7 @@ public class OptionalOnObject {
 
         log.info("customer: {}",customer.toString());
         log.info(customer.get("phoneNumber"));
+        log.info(customer.address);
+        log.info(customer.get("address"));
     }
 }
