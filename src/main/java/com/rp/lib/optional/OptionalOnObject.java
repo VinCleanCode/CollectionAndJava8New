@@ -20,7 +20,7 @@ public class OptionalOnObject {
         processCustomer("customer.json");
     }
 
-    private static void processItem(String JSONFileName) throws ClassNotFoundException, IOException {
+    static void processItem(String JSONFileName) throws ClassNotFoundException, IOException {
         File JSONFile = new File(loader.getClassLoader().getResource(JSONFileName).getFile());
         Item item = (Item) JSONtoObj.parse(JSONFile, Item.class.getName());
 
@@ -34,13 +34,15 @@ public class OptionalOnObject {
         log.info(discount);
     }
 
-    private static void processCustomer(String JSONFileName) throws ClassNotFoundException, IOException {
+    static Customer processCustomer(String JSONFileName) throws ClassNotFoundException, IOException {
         File JSONFile = new File(loader.getClassLoader().getResource(JSONFileName).getFile());
         Customer customer = (Customer) JSONtoObj.parse(JSONFile, Customer.class.getName());
 
         log.info("customer: {}",customer.toString());
         log.info(customer.get("phoneNumber"));
         log.info(customer.address);
-        log.info(customer.get("address"));
+        log.debug(customer.get("address"));
+
+        return customer;
     }
 }
